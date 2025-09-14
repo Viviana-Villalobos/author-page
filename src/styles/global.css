@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Frijole:wght@400&display=swap');
+@import "tailwindcss";
+
+/* Horror fiction theme with pure black background */
+:root {
+  --background: #000000; /* Pure black background */
+  --foreground: #ffffff; /* Pure white text */
+  --card: oklch(0.1 0 0); /* Very dark gray for cards */
+  --card-foreground: oklch(1 0 0); /* White text on cards */
+  --popover: oklch(0.1 0 0);
+  --popover-foreground: oklch(1 0 0);
+  --primary: #4ade80; /* Tailwind green-400 */
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.2 0 0); /* Dark gray */
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.3 0 0); /* Medium gray for muted elements */
+  --muted-foreground: oklch(0.7 0 0);
+  --accent: #4ade80; /* Tailwind green-400 */
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.5 0.3 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: #d1d5db; /* Light gray borders */
+  --input: oklch(0.1 0 0);
+  --ring: #4ade80; /* Tailwind green-400 focus rings */
+  --radius: 0.25rem; /* Subtle rounding */
+}
+
+@layer base {
+  * {
+    @apply border-gray-300;
+  }
+  body {
+    @apply bg-black text-white;
+  }
+}
+
+/* Custom fonts are now configured in tailwind.config.mjs */
