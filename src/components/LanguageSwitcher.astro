@@ -1,0 +1,149 @@
+---
+
+---
+
+<style>
+  .lang-switcher {
+    font-family: "EB Garamond", serif !important;
+  }
+</style>
+
+<button
+  id="language-switcher"
+  class="lang-switcher space-x-2 text-white hover:text-green-400 transition-colors font-garamond text-md flex items-center"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="lucide lucide-globe-icon lucide-globe"
+    ><circle cx="12" cy="12" r="10"></circle><path
+      d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path
+      d="M2 12h20"></path></svg
+  >
+  <span id="current-lang">EN</span>
+</button>
+
+<script>
+  // Translation objects
+  const translations = {
+    en: {
+      home: "Home",
+      writing: "My Writing",
+      about: "About",
+      name: "Vox Villalobos",
+      subtitle: "Horror Fiction",
+      myWriting: "My Writing",
+      shortStories: "Short Stories",
+      aboutTitle: "About",
+      aboutText:
+        "Vox Villalobos started writing from a young age and hasn’t stopped. They specialize in horror fiction, including the macabre, the unsettling, and the unspeakable. When not writing, Vox can be found devouring literature of any genre, blasting music, cosplaying, or getting lost in a video game. Vox lives in San Jose, Costa Rica.",
+      instagram: "Instagram",
+      bluesky: "Bluesky",
+    },
+    es: {
+      home: "Inicio",
+      writing: "Mis escritos",
+      about: "Acerca de",
+      name: "Vox Villalobos",
+      subtitle: "Ficción de terror",
+      myWriting: "Mis escritos",
+      shortStories: "Cuentos",
+      aboutTitle: "Acerca de",
+      aboutText:
+        "Vox Villalobos empezó a escribir desde temprana edad y no se ha detenido. Se especializa en ficción de terror, incluyendo lo macabro, lo inquietante y lo innombrable. Cuando no escribe, se le puede encontrar devorando literatura de cualquier género, escuchando música a todo volumen, haciendo cosplay o sumergiéndose en un videojuego. Vox vive en San José, Costa Rica.",
+      instagram: "Instagram",
+      bluesky: "Bluesky",
+    },
+  };
+
+  // Language state
+  let currentLanguage = localStorage.getItem("language") || "en";
+
+  // Update UI elements with translations
+  function updateLanguage(lang: "en" | "es") {
+    const t = translations[lang];
+
+    // Update navbar
+    document.querySelectorAll(".nav-link").forEach((link, index) => {
+      const keys: (keyof typeof translations.en)[] = [
+        "home",
+        "writing",
+        "about",
+      ];
+      if (link.textContent && keys[index]) {
+        link.textContent = t[keys[index]];
+      }
+    });
+
+    // Update main title
+    const nameElement = document.querySelector("h1.font-frijole");
+    if (nameElement) nameElement.textContent = t.name;
+
+    // Update subtitle
+    const subtitleElement = document.querySelector("p.text-gray-400");
+    if (subtitleElement) subtitleElement.textContent = t.subtitle;
+
+    // Update section titles
+    const writingTitle = document.querySelector("#writing h2");
+    if (writingTitle) writingTitle.textContent = t.myWriting;
+
+    const shortStoriesTitle = document.querySelector("h3.font-frijole");
+    if (shortStoriesTitle) shortStoriesTitle.textContent = t.shortStories;
+
+    const aboutTitle = document.querySelector("#about h2");
+    if (aboutTitle) aboutTitle.textContent = t.aboutTitle;
+
+    // Update about text
+    const aboutText = document.querySelector("#about p");
+    if (aboutText) aboutText.textContent = t.aboutText;
+
+    // Update social media labels
+    const instagramSpan = document.querySelector(
+      'a[aria-label="Instagram"] span'
+    );
+    if (instagramSpan) instagramSpan.textContent = t.instagram;
+
+    const blueskySpan = document.querySelector('a[aria-label="Bluesky"] span');
+    if (blueskySpan) blueskySpan.textContent = t.bluesky;
+
+    // Update language switcher
+    const currentLangElement = document.getElementById("current-lang");
+    if (currentLangElement) currentLangElement.textContent = lang.toUpperCase();
+
+    // Save to localStorage
+    localStorage.setItem("language", lang);
+    currentLanguage = lang;
+  }
+
+  // Toggle language
+  function toggleLanguage() {
+    const newLang = currentLanguage === "en" ? "es" : "en";
+    updateLanguage(newLang);
+  }
+
+  // Initialize
+  document.addEventListener("DOMContentLoaded", () => {
+    updateLanguage(currentLanguage as "en" | "es");
+
+    // Add click handler
+    const switcher = document.getElementById("language-switcher");
+    if (switcher) {
+      switcher.addEventListener("click", toggleLanguage);
+    }
+  });
+
+  // Keyboard shortcut (E key)
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "e" || e.key === "E") {
+      e.preventDefault();
+      toggleLanguage();
+    }
+  });
+</script>

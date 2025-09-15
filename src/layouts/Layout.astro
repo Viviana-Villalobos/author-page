@@ -1,5 +1,6 @@
 ---
-import '../styles/global.css'  
+import '../styles/global.css'
+import LanguageSwitcher from '../components/LanguageSwitcher.astro'
 ---
 
 <!doctype html>
@@ -51,10 +52,15 @@ import '../styles/global.css'
     <!-- Fixed Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-black backdrop-blur-sm border-b border-gray-300">
       <div class="max-w-4xl mx-auto px-6 py-4">
-        <div class="flex justify-center space-x-8">
-          <a href="#home" id="nav-home" class="font-garamond text-lg transition-colors hover:text-green-400 text-white nav-link">Home</a>
-          <a href="#writing" id="nav-writing" class="font-garamond text-lg transition-colors hover:text-green-400 text-white nav-link">My Writing</a>
-          <a href="#about" id="nav-about" class="font-garamond text-lg transition-colors hover:text-green-400 text-white nav-link">About</a>
+        <div class="flex justify-between items-center">
+          <div class="flex justify-center space-x-8 flex-1">
+            <a href="#home" id="nav-home" class="font-garamond text-lg transition-colors hover:text-green-400 text-white nav-link">Home</a>
+            <a href="#writing" id="nav-writing" class="font-garamond text-lg transition-colors hover:text-green-400 text-white nav-link">My Writing</a>
+            <a href="#about" id="nav-about" class="font-garamond text-lg transition-colors hover:text-green-400 text-white nav-link">About</a>
+          </div>
+          <div class="flex justify-end">
+            <LanguageSwitcher />
+          </div>
         </div>
       </div>
     </nav>
