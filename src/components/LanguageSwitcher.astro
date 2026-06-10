@@ -38,9 +38,10 @@
       writing: "My Writing",
       about: "About",
       name: "Vox Villalobos",
-      subtitle: "Horror Fiction",
+      subtitle: "Speculative Fiction",
       myWriting: "My Writing",
       shortStories: "Short Stories",
+      poetryTitle: "Poetry",
       aboutTitle: "About",
       aboutText:
         "Vox Villalobos (they/he/she) started writing from a young age and hasn't stopped. They specialize in horror fiction, including the macabre, the unsettling, and the unspeakable. When not writing, Vox can be found devouring literature of any genre, blasting music, cosplaying, or getting lost in a video game. Vox lives in San José, Costa Rica.",
@@ -52,9 +53,10 @@
       writing: "Mis obras",
       about: "Acerca de",
       name: "Vox Villalobos",
-      subtitle: "Ficción de terror",
+      subtitle: "Ficción especulativa",
       myWriting: "Mis obras",
       shortStories: "Cuentos",
+      poetryTitle: "Poesía",
       aboutTitle: "Acerca de",
       aboutText:
         "Vox Villalobos (elle/él/ella) empezó a escribir desde temprana edad y no se ha detenido. Se especializa en ficción de terror, incluyendo lo macabro, lo inquietante y lo innombrable. Cuando no escribe, se le puede encontrar devorando literatura de cualquier género, escuchando música a todo volumen, haciendo cosplay o sumergiéndose en un videojuego. Vox vive en San José, Costa Rica.",
@@ -96,6 +98,9 @@
 
     const shortStoriesTitle = document.querySelector("h3.font-frijole");
     if (shortStoriesTitle) shortStoriesTitle.textContent = t.shortStories;
+
+    const poetryTitle = document.getElementById("poetry-title");
+    if (poetryTitle) poetryTitle.textContent = t.poetryTitle;
 
     const aboutTitle = document.querySelector("#about h2");
     if (aboutTitle) aboutTitle.textContent = t.aboutTitle;
